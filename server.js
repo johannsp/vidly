@@ -113,7 +113,7 @@ const validateVideo = (video, needId) => {
       }
     );
   // Note that Joi.validate(request, schema) as of Joi 16.x
-  // must be changed to schema.validate(request) to avoid 
+  // must be changed to schema.validate(request) to avoid
   // an error message:
   // TypeError: Joi.validate is not a function
   return schema.validate(video);
