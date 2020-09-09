@@ -44,8 +44,6 @@ app.get("/api/vidly/genres/:id", (req, res) => {
 // POST method(s) //////////////////////
 ////////////////////////////////////////
 app.post("/api/vidly/genres", (req, res) => {
-  console.log("∞° req=\n" + JSON.stringify(req));
-  console.log("∞° req.body=\n" + JSON.stringify(req.body));
   const { error } = validateVideo(req.body, false);
   if (error) {
     return res.status(400).send(error.details[0].message);
@@ -55,7 +53,7 @@ app.post("/api/vidly/genres", (req, res) => {
     id: videos.length + 1,
     genre: req.body.genre
   };
-  videos.push(course);
+  videos.push(video);
   res.send(video);
 });
 
