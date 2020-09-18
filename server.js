@@ -26,21 +26,6 @@ videos = [
 ];
 
 ////////////////////////////////////////
-// GET method(s) ///////////////////////
-////////////////////////////////////////
-app.get("/api/vidly/genres", (req, res) => {
-  res.send(videos);
-});
-
-app.get("/api/vidly/genres/:id", (req, res) => {
-  const video = videos.find(v => v.id === parseInt(req.params.id));
-  if (!video) {
-    return res.status(404).send("The video with given ID was not found");
-  }
-  res.send(video);
-});
-
-////////////////////////////////////////
 // POST method(s) //////////////////////
 ////////////////////////////////////////
 app.post("/api/vidly/genres", (req, res) => {
@@ -54,6 +39,21 @@ app.post("/api/vidly/genres", (req, res) => {
     genre: req.body.genre
   };
   videos.push(video);
+  res.send(video);
+});
+
+////////////////////////////////////////
+// GET method(s) ///////////////////////
+////////////////////////////////////////
+app.get("/api/vidly/genres", (req, res) => {
+  res.send(videos);
+});
+
+app.get("/api/vidly/genres/:id", (req, res) => {
+  const video = videos.find(v => v.id === parseInt(req.params.id));
+  if (!video) {
+    return res.status(404).send("The video with given ID was not found");
+  }
   res.send(video);
 });
 
